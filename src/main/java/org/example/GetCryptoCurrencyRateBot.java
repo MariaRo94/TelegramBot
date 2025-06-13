@@ -28,6 +28,32 @@ public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+        /**
+         * Обрабатывает входящие обновления от Telegram.
+         * <p>
+         * Этот метод вызывается автоматически при получении нового сообщения от пользователя.
+         * Анализирует текст сообщения и выполняет соответствующие действия:
+         * <ul>
+         *   <li>На команду {@code /start} отправляет приветственное сообщение</li>
+         *   <li>На команду {@code /price} или текст "курс" возвращает текущий курс Биткоина</li>
+         *   <li>На неизвестные команды отправляет сообщение с инструкциями</li>
+         * </ul>
+         *
+         * @param update объект {@link Update}, содержащий входящее обновление от Telegram API.
+         *              Должен содержать текстовое сообщение для обработки.
+         *
+         * @implSpec Метод обрабатывает только текстовые сообщения (игнорирует стикеры, голосовые и др.).
+         *           Для корректной работы требуется:
+         *           <ul>
+         *             <li>Подключенная библиотека telegrambots</li>
+         *             <li>Реализованный метод {@code sendMessage}</li>
+         *             <li>Доступ к API для получения курса Биткоина</li>
+         *           </ul>
+         *
+         * @see #sendMessage(long, String) Метод для отправки сообщений
+         * @see Update Класс входящего обновления
+         *
+         */
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             long chatId = update.getChatMember().getChat().getId();
