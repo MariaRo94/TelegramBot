@@ -40,7 +40,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.28</version> <!-- или актуальная версия -->
+            <version>1.18.30</version> <!-- или актуальная версия -->
             <scope>provided</scope>
         </dependency>
 
