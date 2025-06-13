@@ -2,6 +2,7 @@ package org.example;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -15,6 +16,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Slf4j
+@Data
 public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
 
     private static final String API_BITCOIN = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd";
@@ -39,6 +41,7 @@ public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
                 try {
                     String bitcoinPrice = getBitcoinPrice();
                     sendMessage(chatId, "Текущий курс Биткоина: " + bitcoinPrice + " USD");
+                    log.info("Success");
                 } catch (Exception e) {
                     sendMessage(chatId, "Извините, не удалось получить курс Биткоина. Попробуйте позже.");
                     e.printStackTrace();
@@ -49,7 +52,7 @@ public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
         }
     }
 
-    private String getBitcoinPrice() throws IOException, InterruptedException {
+    private String getBitcoinPrice() {
         try {
             HttpClient httpClient = HttpClient.newHttpClient();
             HttpRequest httpRequest = HttpRequest.newBuilder()
