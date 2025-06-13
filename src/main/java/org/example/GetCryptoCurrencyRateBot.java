@@ -23,6 +23,7 @@ public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
+
         return BOT_USERNAME;
     }
 
