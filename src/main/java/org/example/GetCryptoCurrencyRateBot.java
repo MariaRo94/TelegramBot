@@ -29,8 +29,7 @@ public class GetCryptoCurrencyRateBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         /**
-         * Обрабатывает входящие обновления от Telegram.
-         * <p>
+         * Обрабатывает входящие обновления от Telegram
          * Этот метод вызывается автоматически при получении нового сообщения от пользователя.
          * Анализирует текст сообщения и выполняет соответствующие действия:
          * <ul>
